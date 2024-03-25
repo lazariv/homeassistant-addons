@@ -17,9 +17,9 @@ RUN apt-get update \
         colord \
         printer-driver-all-enforce \
         openprinting-ppds \
-        hpijs-ppds \
-        hp-ppd  \
-        hplip \
+        #hpijs-ppds \
+        #hp-ppd  \
+        #hplip \
         cups-pdf \
         gnupg2 \
         lsb-release \
@@ -28,10 +28,18 @@ RUN apt-get update \
         bash-completion \
         procps \
         whois \
+        build-essential \
+        tix \
+        vim \
+        groff \
+        dc \
+        git \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY rootfs /
+
+RUN git clone https://github.com/koenkooi/foo2zjs.git && cd foo2zjs && make && make install install-hotplug cups
 
 # Add user and disable sudo password checking
 RUN useradd \
