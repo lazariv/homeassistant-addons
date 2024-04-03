@@ -12,6 +12,9 @@ rm -v -fR /etc/cups
 
 ln -v -s /data/cups /etc/cups
 
+bashio::log.info "Uploading driver to HP printer"
+cat /usr/share/foo2xqx/firmware/sihpP1005.dl > /dev/usb/lp0
+
 bashio::log.info "Starting CUPS server as CMD from S6"
 
 cupsd -f
