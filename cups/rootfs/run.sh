@@ -12,6 +12,7 @@ rm -v -fR /etc/cups
 
 ln -v -s /data/cups /etc/cups
 
+# https://bbs.archlinux.org/viewtopic.php?id=112015
 bashio::log.info "Uploading driver to HP printer"
 cat /usr/share/foo2xqx/firmware/sihpP1005.dl > /dev/usb/lp0
 
